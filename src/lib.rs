@@ -5,6 +5,7 @@
 #![cfg_attr(test, feature(plugin))]
 #![cfg_attr(test, plugin(clippy))]
 
+#[macro_use]
 extern crate failure;
 extern crate reqwest;
 
@@ -23,6 +24,10 @@ pub enum Availability {
 
 /// Get the availability for a crate on crates.io.
 pub fn get(name: &str) -> Result<Availability, Error> {
+  ensure!(
+    name.len() > 0,
+    "name should be more than 0 characters"
+  );
   let addr = format!("https://crates.io/api/v1/crates/{}", name);
   let url = Url::parse(&addr)?;
   let res = reqwest::get(url)?;
