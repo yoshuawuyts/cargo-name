@@ -1,0 +1,17 @@
+[package]
+name = "cargo-name"
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yoshuawuyts/cargo-name"
+documentation = "https://docs.rs/cargo-name"
+description = "Check whether a crate name is available on crates.io"
+authors = ["Yoshua Wuyts <yoshuawuyts@gmail.com>"]
+readme = "README.md"
+
+[dependencies]
+quicli = "0.2.0"
+reqwest = "0.8.5"
+failure = "0.1.1"
+
+[dev-dependencies]
+clippy = "0.0"
