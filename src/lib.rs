@@ -25,7 +25,7 @@ pub enum Availability {
 /// Get the availability for a crate on crates.io.
 pub fn get(name: &str) -> Result<Availability, Error> {
   ensure!(
-    name.len() > 0,
+    !name.is_empty(),
     "name should be more than 0 characters"
   );
   let addr = format!("https://crates.io/api/v1/crates/{}", name);
