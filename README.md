@@ -26,7 +26,7 @@ ARGS:
 
 ## Installation
 ```sh
-$ cargo add cargo-name
+$ cargo install cargo-name
 ```
 
 ## License
