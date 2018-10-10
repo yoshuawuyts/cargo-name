@@ -24,16 +24,13 @@ pub enum Availability {
 
 /// Get the availability for a crate on crates.io.
 pub fn get(name: &str) -> Result<Availability, Error> {
-  ensure!(
-    !name.is_empty(),
-    "name should be more than 0 characters"
-  );
+  ensure!(!name.is_empty(), "name should be more than 0 characters");
   let addr = format!("https://crates.io/api/v1/crates/{}", name);
   let url = Url::parse(&addr)?;
   let res = reqwest::get(url)?;
   let status = match res.status() {
-    StatusCode::Ok => Availability::Unavailable,
-    StatusCode::NotFound => Availability::Available,
+    StatusCode::OK => Availability::Unavailable,
+    StatusCode::NOT_FOUND => Availability::Available,
     _ => Availability::Unknown,
   };
   Ok(status)
